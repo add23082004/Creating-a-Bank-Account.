@@ -1,12 +1,20 @@
 class Account:
+    next_account_number = 1000
     sum_to_deposit = 0
     sum_to_withdraw = 0
+    account_number = 0
 
-    def __init__(self, account_number, account_balance, account_holder):
-        self.account_number = int(account_number)
+    @classmethod
+    def generate_account_number(cls):
+        # Generate a unique account number
+        account_number = str(cls.next_account_number)
+        cls.next_account_number += 1
+        return account_number
+
+    def __init__(self, account_balance, account_holder):
+        self.account_number = Account.generate_account_number()
         self.account_balance = float(account_balance)
         self.account_holder = str(account_holder)
-        print("Welcome to your bank account.")
 
     def deposit(self, sum_to_deposit):
         self.sum_to_deposit = sum_to_deposit
@@ -35,9 +43,8 @@ class Account:
             print("You don't have anything left in your bank account.\nYou're broke !!!")
 
 
-my_account = Account(12, 342425.24, "Ibra")
-my_account.withdraw(25432)
-my_account.deposit(245654)
-my_account.check_balance()
+my_account1 = Account(342425.24, "Ibra")
+
+
 
 
