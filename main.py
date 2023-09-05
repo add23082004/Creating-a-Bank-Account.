@@ -1,14 +1,16 @@
+import random
+
+
 class Account:
-    next_account_number = 1000
+    next_account_number = random.randint(1, 1000)
     sum_to_deposit = 0
     sum_to_withdraw = 0
     account_number = 0
 
     @classmethod
     def generate_account_number(cls):
-        # Generate a unique account number
         account_number = str(cls.next_account_number)
-        cls.next_account_number += 1
+        cls.next_account_number += random.randint(1, 10)
         return account_number
 
     def __init__(self, account_balance, account_holder):
@@ -44,6 +46,9 @@ class Account:
 
 
 my_account1 = Account(342425.24, "Ibra")
+
+print(my_account1.account_number)
+
 
 
 
